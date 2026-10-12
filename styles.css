@@ -16,6 +16,7 @@
   --accent:    #5eead4;
   --accent-2:  #7cff9b;
   --accent-ink:#04110d;
+  --attack-accent: #f87171;
   --shadow:    0 1px 0 rgba(255,255,255,.02), 0 20px 40px -24px rgba(0,0,0,.7);
 }
 
@@ -32,6 +33,7 @@
   --accent:    #0d9488;
   --accent-2:  #059669;
   --accent-ink:#ffffff;
+  --attack-accent: #b91c1c;
   --shadow:    0 1px 2px rgba(16,21,28,.04), 0 18px 40px -28px rgba(16,21,28,.25);
 }
 
@@ -57,7 +59,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 
 .marker, .card__idx, .repo__name, .repo__lang, .repo__cta,
 .htb-stat__k, .contact__k, .hero__eyebrow, .card__kind,
-.paper__meta, .footer, .card .tags li, .stack__list li {
+.stats__num, .paper__meta, .footer, .card .tags li, .stack__list li {
   font-family: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -121,8 +123,19 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
   font-weight: 700; letter-spacing: -.035em; margin-bottom: 1.8rem;
 }
 .hero__title .accent { color: var(--accent); }
+.hero__title .accent--attack { color: var(--attack-accent); }
 .hero__lead { max-width: 62ch; color: var(--text-dim); font-size: 1.08rem; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.2rem; }
+
+/* ===================== STATS ===================== */
+.stats {
+  list-style: none; margin: 0; padding: 1.5rem 0 1.7rem;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.2rem;
+}
+.stats li { display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
+.stats__num { color: var(--accent); font-size: clamp(1.55rem, 2.7vw, 2.15rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.1; }
+.stats__label { color: var(--text-mute); font-size: .78rem; line-height: 1.4; }
 
 /* ===================== SECTIONS ===================== */
 .section { padding: 3.4rem 0; }
@@ -135,6 +148,8 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 /* ===================== CARDS ===================== */
 .cards { display: grid; gap: 1.1rem; }
 .cards--focus, .cards--work { grid-template-columns: repeat(2, 1fr); }
+.cards--focus .card { display: flex; flex-direction: column; }
+.cards--focus .tags { margin-top: auto; }
 
 .card {
   position: relative; padding: 1.5rem 1.5rem 1.6rem;
@@ -165,6 +180,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
   box-shadow: var(--shadow); transition: border-color .18s, transform .18s;
 }
 .repo:hover { border-color: var(--accent); transform: translateY(-2px); }
+.repo--private:hover { border-color: var(--border); transform: none; }
 .repo--featured { border-color: var(--border-2); background:
   radial-gradient(30rem 16rem at 100% 0%, rgba(124,255,155,.06), transparent 55%), var(--panel); }
 .repo__head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .7rem; }
@@ -181,6 +197,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 .repo__lang[data-lang="shell"]  { color: #7cff9b; border-color: #7cff9b40; }
 .repo__desc { color: var(--text-dim); font-size: .9rem; margin: 0 0 1.1rem; flex: 1; }
 .repo__cta { color: var(--accent); font-size: .74rem; letter-spacing: .04em; }
+.repo__status { color: var(--text-mute); font-family: "JetBrains Mono", monospace; font-size: .74rem; letter-spacing: .04em; }
 .repo--flagship {
   grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 1.5rem;
   padding: 2rem 2.2rem; border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
@@ -304,9 +321,12 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 900px) {
   .stack, .repos { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.5rem; }
 }
 @media (max-width: 760px) {
   .nav__links { display: none; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats li:last-child { grid-column: 1 / -1; align-items: center; }
   .nav__mobile-projects { display: inline-block; }
   .repo--flagship { grid-template-columns: 1fr; gap: 1rem; padding: 1.4rem; }
   .repo__title-row h3 { font-size: 1.65rem; }

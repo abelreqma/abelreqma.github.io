@@ -18,10 +18,11 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div id="top"></div>
 <a class="skip-link" href="#expertise">Skip to content</a>
 
 <!-- ============ NAV ============ -->
-<header class="nav" id="top">
+<header class="nav">
   <div class="nav__inner container">
     <a href="#top" class="nav__brand">
       <img class="nav__brand-logo" src="assets/logo.png" alt="Abel Maldonado logo" />
@@ -49,17 +50,28 @@
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero container">
-  <p class="hero__eyebrow">Security Engineer, San Jose CA</p>
+  <p class="hero__eyebrow">OSCP | Security Engineer | San Jose, CA</p>
   <h1 class="hero__title">
-    Securing the <span class="accent">Cloud</span>, the <span class="accent">Model</span>,<br />and Everything in Between.
+    Securing the <span class="accent">Cloud</span>, the <span class="accent">Model</span>, and Everything in Between with an <span class="accent accent--attack">Attacker&#39;s Mindset</span>.
   </h1>
   <p class="hero__lead">
-    Security engineer building systems that make security work testable and defensible. I work across cloud infrastructure, AI security, and authorized assessment, from least-privilege controls to open-source research tools.
+    Find attack paths and build systems that make security work testable and defensible. My work spans offensive security, AI security, cloud infrastructure, and software engineering, turning assessment evidence into scoped tools and least-privilege controls.
   </p>
   <div class="hero__cta">
     <a href="#projects" class="btn btn--solid">Explore Projects</a>
     <a href="assets/Abel-Maldonado-Resume.pdf" class="btn btn--ghost" target="_blank" rel="noopener">Download Résumé</a>
   </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="container" aria-label="Credentials and experience">
+  <ul class="stats">
+    <li><span class="stats__num">OSCP</span><span class="stats__label">Offensive Security</span></li>
+    <li><span class="stats__num">Security+</span><span class="stats__label">CompTIA Certified</span></li>
+    <li><span class="stats__num">5+</span><span class="stats__label">Years in Security</span></li>
+    <li><span class="stats__num">10+</span><span class="stats__label">Projects Shipped</span></li>
+    <li><span class="stats__num">3.94</span><span class="stats__label">Graduate GPA</span></li>
+  </ul>
 </section>
 
 <!-- ============ EXPERTISE ============ -->
@@ -73,18 +85,18 @@
     <article class="card">
       <div class="card__idx">01</div>
       <h3>Offensive Security</h3>
-      <p>Internal and external penetration testing across web, cloud, Active Directory, and Kubernetes. Attack-path analysis, exploit development, and an autonomous offensive-security engine that sandboxes an abliterated open-weights model.</p>
+      <p>Conduct engagements for external and internal penetration testing, web application assessments, and AI security testing. Trace and analyze attack paths across cloud, Active Directory, Kubernetes, and network environments, and develop exploits to validate impact.</p>
       <ul class="tags">
-        <li>Pentesting</li><li>Attack-Path Analysis</li><li>Exploit Dev</li><li>MITRE ATT&amp;CK</li><li>EASM</li>
+        <li>External / Internal Pentesting</li><li>Web App Testing</li><li>AI Security Testing</li><li>Attack-Path Analysis</li><li>Exploit Development</li><li>Network / AD</li><li>MITRE ATT&amp;CK</li><li>EASM</li>
       </ul>
     </article>
 
     <article class="card">
       <div class="card__idx">02</div>
       <h3>AI Security</h3>
-      <p>Securing the LLM stack end to end. Hardened self-hosted vLLM serving against prompt injection and trojaned model releases, isolated agent tool servers, and threat-model AI systems with MITRE ATLAS.</p>
+      <p>Securing the LLM stack end to end. Assess AI applications for prompt injection, unsafe tool behavior, and model supply-chain risk. Harden self-hosted vLLM serving, isolate agent tool servers, and build scoped AI assessment workflows in Golang with code-enforced action controls and linked evidence.</p>
       <ul class="tags">
-        <li>Prompt-Injection Defense</li><li>Model Supply Chain</li><li>MCP Isolation</li><li>MITRE ATLAS</li><li>vLLM Hardening</li>
+        <li>AI App Testing</li><li>Prompt Injection</li><li>Agent Tool Security</li><li>Model Supply Chain</li><li>MCP Isolation</li><li>vLLM Hardening</li><li>MITRE ATLAS</li>
       </ul>
     </article>
 
@@ -93,7 +105,7 @@
       <h3>Cloud Infrastructure &amp; IAM</h3>
       <p>Led an organization-wide cloud posture audit and hardened the estate: least-privilege IAM, network segmentation, VPC Service Controls, deny-by-default egress, and a zero-egress serving perimeter.</p>
       <ul class="tags">
-        <li>CNAPP / CSPM</li><li>Least-Priv IAM</li><li>VPC Service Controls</li><li>Zero-Egress</li><li>GCP / AWS / Azure</li>
+        <li>CNAPP / CSPM</li><li>Least-Priv IAM</li><li>VPC Service Controls</li><li>Network Segmentation</li><li>Zero-Egress</li><li>GCP / AWS / Azure</li>
       </ul>
     </article>
 
@@ -102,7 +114,7 @@
       <h3>DevSecOps</h3>
       <p>Detection engineering, container and Kubernetes hardening, and CI/CD security. Built agentic vulnerability triage grounded in deterministic controls, with STRIDE threat modeling across the SDLC.</p>
       <ul class="tags">
-        <li>Kubernetes / Docker</li><li>Detection Engineering</li><li>STRIDE</li><li>Trivy</li><li>Elastic SIEM</li>
+        <li>Kubernetes / Docker</li><li>Detection Engineering</li><li>CI/CD Security</li><li>STRIDE</li><li>Trivy</li><li>Elastic SIEM</li>
       </ul>
     </article>
 
@@ -128,8 +140,8 @@
         <p class="repo__summary">A local-first framework for authorized security research and assessment. Go enforces rules of engagement, target scope, action permissions, and resource limits around model-proposed tasks. Isolated workers execute permitted actions while SQLite keeps the evidence connected to each decision.</p>
         <div class="repo__links">
           <a href="https://github.com/abelreqma/blkchain" target="_blank" rel="noopener">View code</a>
-          <a href="https://github.com/abelreqma/blkchain/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">Architecture</a>
-          <a href="https://github.com/abelreqma/blkchain/releases/tag/v0.3.0" target="_blank" rel="noopener">v0.3.0 release</a>
+          <a href="https://github.com/abelreqma/blkchain/blob/main/docs/ARCHITECTURE.md#runtime-flow" target="_blank" rel="noopener">Architecture</a>
+          <a href="https://github.com/abelreqma/blkchain/releases" target="_blank" rel="noopener">View Latest Release</a>
         </div>
       </div>
       <a class="repo__system-map repo__system-map--desktop" href="assets/blkchain-system-map.svg" target="_blank" rel="noopener" aria-label="Open the full blkChain system map">
@@ -186,6 +198,15 @@
       <p class="repo__desc">LDAP3 fork adding Pass-the-Hash / NT-hash authentication for Active Directory tradecraft.</p>
       <span class="repo__cta">View Repository</span>
     </a>
+
+    <article class="repo repo--private" aria-labelledby="domainoxide-title">
+      <div class="repo__head">
+        <span class="repo__name" id="domainoxide-title">DomainOxide</span>
+        <span class="repo__lang" data-lang="rust">Rust</span>
+      </div>
+      <p class="repo__desc">Private Rust framework for Active Directory privilege escalation, currently in development.</p>
+      <span class="repo__status">Private project</span>
+    </article>
 
   </div>
 </section>
@@ -256,7 +277,7 @@
     <div class="stack__cat">
       <h3>Offensive Security</h3>
       <ul class="stack__list">
-        <li>Web / DB Pentesting</li><li>Cloud &amp; Container Pentesting</li><li>Active Directory</li><li>Kubernetes</li><li>Attack-Path Analysis &amp; Chaining</li><li>Exploit Development</li><li>EASM</li><li>MITRE ATT&amp;CK &amp; ATLAS</li>
+        <li>External / Internal Testing</li><li>Web Application Testing</li><li>Network Pentesting</li><li>Cloud &amp; Container Pentesting</li><li>Active Directory</li><li>Kubernetes</li><li>Attack-Path Analysis &amp; Chaining</li><li>Exploit Development</li><li>EASM</li><li>MITRE ATT&amp;CK &amp; ATLAS</li>
       </ul>
     </div>
     <div class="stack__cat">
@@ -268,7 +289,7 @@
     <div class="stack__cat">
       <h3>AI &amp; LLM Security</h3>
       <ul class="stack__list">
-        <li>vLLM Serving</li><li>FP8 Quantization</li><li>Prompt-Injection Defense</li><li>Model Supply Chain</li><li>MCP Isolation</li><li>Guardrails AI</li><li>Hybrid RAG</li><li>Qdrant</li><li>Pydantic AI</li><li>LangGraph</li><li>LLM Red Teaming</li>
+        <li>AI Application Testing</li><li>vLLM Serving</li><li>FP8 Quantization</li><li>Prompt-Injection Defense</li><li>Agent Tool Security</li><li>Model Supply Chain</li><li>MCP Isolation</li><li>Hybrid RAG</li><li>Qdrant</li><li>Pydantic AI</li><li>LangGraph</li><li>LLM Red Teaming</li>
       </ul>
     </div>
     <div class="stack__cat">
@@ -317,7 +338,7 @@
     <div class="htb-card__left">
       <span class="marker">06</span>
       <h2>Hack The Box</h2>
-      <p>At Pro Hacker rank, I work hands-on across web, Active Directory, cloud, and privilege-escalation paths. I also captain a competitive CTF team and led Boston University's NCAE CyberGames team to a regional win at the 2025 East Overflow and a fourth-place finish among twelve teams, earning Most Valuable Teammate honors at both the invitational and the regional.</p>
+      <p>Work hands-on across web, Active Directory, cloud, and privilege-escalation paths at Pro Hacker rank. Captain a competitive CTF team and led Boston University's NCAE CyberGames team to a regional win at the 2025 East Overflow and a fourth-place finish among twelve teams, earning Most Valuable Teammate honors at both the invitational and the regional.</p>
       <div class="htb-card__actions">
         <a href="https://app.hackthebox.com/public/users/1676584" class="btn btn--solid" target="_blank" rel="noopener">View My Profile</a>
         <a href="https://app.hackthebox.com/public/teams/7068" class="btn btn--ghost" target="_blank" rel="noopener">View My Team</a>
