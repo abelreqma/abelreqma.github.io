@@ -56,8 +56,8 @@ a { color: inherit; text-decoration: none; }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 
 .marker, .card__idx, .repo__name, .repo__lang, .repo__cta,
-.repo__badge, .htb-stat__k, .contact__k, .hero__eyebrow, .card__kind,
-.stats__num, .paper__meta, .footer, .card .tags li, .stack__list li {
+.htb-stat__k, .contact__k, .hero__eyebrow, .card__kind,
+.paper__meta, .footer, .card .tags li, .stack__list li {
   font-family: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -87,6 +87,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 .nav__links a { color: var(--text-dim); font-size: .92rem; font-weight: 500; transition: color .15s; }
 .nav__links a:hover { color: var(--text); }
 .nav__actions { display: flex; align-items: center; gap: .7rem; }
+.nav__mobile-projects { display: none; color: var(--text-dim); font-size: .9rem; font-weight: 600; }
 
 .icon-btn {
   display: grid; place-items: center; width: 38px; height: 38px;
@@ -110,7 +111,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ===================== HERO ===================== */
-.hero { padding: 5.5rem 0 2.6rem; }
+.hero { padding: 4.6rem 0 2.8rem; }
 .hero__eyebrow {
   color: var(--accent); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
   margin: 0 0 1.4rem;
@@ -120,18 +121,8 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
   font-weight: 700; letter-spacing: -.035em; margin-bottom: 1.8rem;
 }
 .hero__title .accent { color: var(--accent); }
-.hero__lead { max-width: 68ch; color: var(--text-dim); font-size: 1.08rem; }
+.hero__lead { max-width: 62ch; color: var(--text-dim); font-size: 1.08rem; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.2rem; }
-
-/* ===================== STATS ===================== */
-.stats {
-  list-style: none; margin: 1rem 0 0; padding: 1.8rem 0;
-  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-}
-.stats li { display: flex; flex-direction: column; gap: .3rem; align-items: flex-start; }
-.stats__num { color: var(--accent); font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 600; line-height: 1; }
-.stats__label { color: var(--text-mute); font-size: .82rem; }
 
 /* ===================== SECTIONS ===================== */
 .section { padding: 3.4rem 0; }
@@ -184,13 +175,33 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 }
 .repo__lang[data-lang="rust"]   { color: #ff9d6e; border-color: #ff9d6e40; }
 .repo__lang[data-lang="python"] { color: #6ea8ff; border-color: #6ea8ff40; }
+.repo__lang[data-lang="go"] { color: #81dfa6; border-color: #81dfa666; }
+:root[data-theme="light"] .repo__lang[data-lang="go"] { color: #087a45; border-color: #087a4566; }
+.repo__lang[data-lang="skill"] { color: #d5b4ff; border-color: #d5b4ff40; }
 .repo__lang[data-lang="shell"]  { color: #7cff9b; border-color: #7cff9b40; }
 .repo__desc { color: var(--text-dim); font-size: .9rem; margin: 0 0 1.1rem; flex: 1; }
 .repo__cta { color: var(--accent); font-size: .74rem; letter-spacing: .04em; }
-.repo__badge {
-  align-self: flex-start; color: var(--accent-2); font-size: .68rem; letter-spacing: .05em;
-  border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent); border-radius: 999px; padding: .18rem .55rem;
+.repo--flagship {
+  grid-column: 1 / -1; display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+  padding: 2rem 2.2rem; border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
+  background: radial-gradient(40rem 25rem at 100% 0%, rgba(94,234,212,.11), transparent 60%), var(--panel);
 }
+.repo__feature-label {
+  font-family: "JetBrains Mono", monospace; color: var(--accent); font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .1em;
+}
+.repo__title-row { display: flex; align-items: center; gap: 1rem; margin: .7rem 0 1rem; }
+.repo__title-row h3 { font-size: 2rem; letter-spacing: -.04em; }
+.repo__summary { color: var(--text-dim); font-size: 1rem; line-height: 1.65; max-width: 65ch; margin: 0 0 1.4rem; }
+.repo__links { display: flex; flex-wrap: wrap; gap: .7rem; }
+.repo__links a { border: 1px solid var(--border-2); color: var(--text); border-radius: 8px; padding: .48rem .78rem; font-size: .82rem; font-weight: 600; }
+.repo__links a:first-child { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.repo__system-map { display: block; min-width: 0; }
+.repo__system-map--mobile { display: none; }
+.repo__system-map img { display: block; width: 100%; height: auto; border-radius: 14px; transition: filter .15s; }
+.repo__system-map:hover img { filter: brightness(1.04); }
+.repo__system-map-label { display: block; margin-top: .55rem; color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: .74rem; text-align: right; }
+.repo__links a:focus-visible, .repo__system-map:focus-visible, .repo:focus-visible, .nav__mobile-projects:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ===================== STACK ===================== */
 .stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
@@ -263,7 +274,7 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 /* ===================== CONTACT ===================== */
 .contact__links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .contact__link {
-  display: flex; align-items: center; gap: .9rem;
+  display: flex; align-items: center; gap: .9rem; min-width: 0;
   padding: 1.1rem 1.3rem; border: 1px solid var(--border); border-radius: 12px;
   background: var(--panel); transition: border-color .18s, transform .18s;
 }
@@ -293,10 +304,14 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 900px) {
   .stack, .repos { grid-template-columns: repeat(2, 1fr); }
-  .stats { grid-template-columns: repeat(2, 1fr); row-gap: 1.6rem; }
 }
 @media (max-width: 760px) {
   .nav__links { display: none; }
+  .nav__mobile-projects { display: inline-block; }
+  .repo--flagship { grid-template-columns: 1fr; gap: 1rem; padding: 1.4rem; }
+  .repo__title-row h3 { font-size: 1.65rem; }
+  .repo__system-map--desktop { display: none; }
+  .repo__system-map--mobile { display: block; }
   .cards--focus, .cards--work, .stack, .repos { grid-template-columns: 1fr; }
   .htb-card { grid-template-columns: 1fr; }
   .creds, .contact__links { grid-template-columns: 1fr; }
