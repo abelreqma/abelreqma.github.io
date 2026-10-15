@@ -1,27 +1,31 @@
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Theme toggle (persisted)
-const root = document.documentElement;
-const stored = (() => { try { return localStorage.getItem('theme'); } catch { return null; } })();
-if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+const workCarousel = document.querySelector('.work-carousel');
+if (workCarousel) {
+  const track = workCarousel.querySelector('#work-cards');
+  const cards = Array.from(track.querySelectorAll('.card--work'));
+  const previous = workCarousel.querySelector('#work-prev');
+  const next = workCarousel.querySelector('#work-next');
+  const position = workCarousel.querySelector('#work-position');
+  const mobile = window.matchMedia('(max-width: 700px)');
+  let index = 0;
 
-document.getElementById('theme-toggle').addEventListener('click', () => {
-  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  root.setAttribute('data-theme', next);
-  try { localStorage.setItem('theme', next); } catch {}
-});
+  function showWork(target, wrap = false) {
+    const visible = mobile.matches ? 1 : 2;
+    const lastStart = Math.max(0, cards.length - visible);
+    index = wrap ? (target + lastStart + 1) % (lastStart + 1) : Math.min(target, lastStart);
+    const first = index + 1;
+    const last = Math.min(cards.length, index + visible);
 
-// Scroll reveal
-const revealEls = document.querySelectorAll('.section, .hero__cta, .stats, .card, .stack__cat, .repo, .paper, .htb-card');
-revealEls.forEach(el => el.classList.add('reveal'));
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('is-visible'));
+    track.style.height = `${Math.max(...cards.slice(index, index + visible).map(card => card.offsetHeight))}px`;
+    track.scrollLeft = cards[index].offsetLeft - cards[0].offsetLeft;
+    position.textContent = first === last ? `${first} of ${cards.length}` : `${first}-${last} of ${cards.length}`;
+  }
+
+  previous.addEventListener('click', () => showWork(index - 1, true));
+  next.addEventListener('click', () => showWork(index + 1, true));
+  window.addEventListener('resize', () => showWork(index));
+  workCarousel.classList.add('is-ready');
+  showWork(0);
 }

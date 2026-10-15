@@ -1,0 +1,17 @@
+Technology logos in this directory are from Devicon:
+https://github.com/devicons/devicon
+
+Source commit: 6a37858047b0e8d9c9c0e68f4a071fc410652e89
+License: MIT; see LICENSE.devicon.txt.
+
+Additional logos are from Simple Icons:
+https://github.com/simple-icons/simple-icons
+
+Source commit: 4d29a35c954699b389a834aacc97dd6e7e74143c
+License: CC0-1.0; see LICENSE.simple-icons.txt.
+The SVG fills use the brand hex values in that commit's data/simple-icons.json.
+
+Nmap logo: https://nmap.org/images/nmap-logo-64px.png
+Downloaded SHA-256: 4aba7b8ee68ee3b29d23fa87aee8db804e252288981bc143161d868ceb272865
+
+The logos identify the named technologies. Their owners retain their trademarks.
